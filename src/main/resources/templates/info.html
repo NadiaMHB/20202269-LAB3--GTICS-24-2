@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2>Información</h2>
+    <form th:action="@{/employee/actualizar}" method="post" th:object="${employee}">
+        <input th:value="${employee.id}" name="id" type="hidden" />
+
+        <!-- Nombre -->
+        <div class="mb-3">
+            <label for="firstName" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="firstName" th:field="${employee.firstName}" disabled/>
+        </div>
+
+        <!-- Apellido -->
+        <div class="mb-3">
+            <label for="lastName" class="form-label">Apellido</label>
+            <input type="text" class="form-control" id="lastName" th:field="${employee.lastName}" disabled/>
+        </div>
+
+        <!-- Cargo -->
+        <div class="mb-3">
+            <label for="jobId" class="form-label">Cargo</label>
+            <input type="text" class="form-control" id="jobId" th:field="${employee.jobId.jobTitle}" disabled/>
+        </div>
+
+        <!-- Departamento -->
+        <div class="mb-3">
+            <label for="departmentName" class="form-label">Departamento</label>
+            <input type="text" class="form-control" id="departmentName" th:field="${employee.department.departmentName}" disabled/>
+        </div>
+
+        <!-- Teléfono -->
+        <div class="mb-3">
+            <label for="phoneNumber" class="form-label">Teléfono</label>
+            <input type="text" class="form-control" id="phoneNumber" th:field="${employee.department.location.city}" />
+        </div>
+
+        <!-- Salario -->
+        <div class="mb-3">
+            <label for="jobId" class="form-label">Salario</label>
+            <input type="number" class="form-control" id="salary" th:field="${employee.salary}"/>
+        </div>
+
+
+        <!-- Botón de regreso -->
+        <a th:href="@{/employee/list}" class="btn btn-danger">Cancelar</a>
+        <button type="submit" class="btn btn-primary">Guaradar</button>
+    </form>
+</div>
+
+<!-- Bootstrap 5 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
